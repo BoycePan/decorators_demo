@@ -1,11 +1,11 @@
 function logged(target, propKey, descriptor) {
   let value = descriptor.initializer();
+  //应用在属性上是 initializer
+  //应用在方法上是 value
   descriptor.initializer = () => {
     console.log(`initializing ${propKey} with value ${value}`);
     return value + 1;
   };
-  console.log('7行 - test.js -: => ', value);
-  // return descriptor;
 }
 
 class C {

@@ -18,5 +18,5 @@ function log(target, name, descriptor) {
 
 const math = new Math();
 
-// passed parameters should get logged now
 math.add(2, 4);
+math.add(3, 9);

@@ -1,4 +1,3 @@
-// .babelrc.js
 module.exports = {
   presets: [
     [
@@ -11,6 +10,8 @@ module.exports = {
     ],
     '@babel/preset-typescript',
   ],
-  // presets: ['@babel/preset-env', '@babel/preset-typescript'],
-  plugins: [['@babel/plugin-proposal-decorators', { legacy: true }]],
+  plugins: [
+    ['@babel/plugin-proposal-decorators', { legacy: true }],
+    ['@babel/plugin-proposal-class-properties', { legacy: true }],
+  ],
 };
