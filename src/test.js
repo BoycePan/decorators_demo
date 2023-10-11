@@ -1,17 +1,23 @@
-function logged(target, propKey, descriptor) {
-  let value = descriptor.initializer();
-  descriptor.initializer = () => {
-    console.log(`initializing ${propKey} with value ${value}`);
-    return value + 1;
+function beforeExecution(target, key, descriptor) {
+  const originalMethod = descriptor.value;
+
+  // Redefine the original method
+  descriptor.value = function (...args) {
+    console.log('Executing before the original method');
+    // Execute the original method
+    originalMethod.apply(this, args);
   };
-  console.log('7行 - test.js -: => ', value);
-  // return descriptor;
+
+  return descriptor;
 }
 
-class C {
-  @logged x = 1;
+class MyClass {
+  aa = 123;
+  @beforeExecution
+  myMethod() {
+    console.log('Executing the original method', this.aa);
+  }
 }
 
-const a = new C();
-console.log('17行 - test.js -: => ', a);
-console.log('17行 - test.js -: => ', Object.getOwnPropertyDescriptor(a, 'x'));
+const instance = new MyClass();
+instance.myMethod();
