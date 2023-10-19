@@ -16,13 +16,11 @@ class Dog {
   bark() {
     return 'wang!wang!';
   }
-  test() {
-    return 'test';
-  }
+  /* test() {
+    return 'test11';
+  } */
 }
 let dog = new Dog();
 for (const key in dog) {
   console.log('20行 - 01.类的属性&方法.js -: => ', key);
 }
-
-// dog.bark = '123123';

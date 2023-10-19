@@ -8,6 +8,8 @@ class Dog {}
 
 console.log(Dog.isAnimal); // true
 
+console.log('---------分割线----------');
+
 //2.对不同的目标对象应用同一个 decorator ，但同时又需要有一些差别
 //可以在装饰器外面再封装一层函数。更加灵活
 function desc2(isAnimal = false) {
@@ -24,8 +26,10 @@ console.log(Cat.isAnimal); // true
 class Person {}
 console.log(Person.isAnimal); // false
 
+console.log('---------分割线----------');
+
 //对方法/属性也是类似的
-function enumerable(isEnumerable) {
+function enumerable(isEnumerable = false) {
   return function (target, key, descriptor) {
     descriptor.enumerable = isEnumerable;
     return descriptor;
